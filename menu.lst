@@ -1,0 +1,133 @@
+# This is a sample menu.lst file. You should make some changes to it.
+# The old install method of booting via the stage-files has been removed.
+# Please install GRLDR boot strap code to MBR with the bootlace.com
+# utility under DOS/Win9x or Linux.
+
+color blue/green yellow/red white/magenta white/magenta
+timeout 10
+default 0
+
+title avg_arl_cdi_all_120_160420a12074
+ find --set-root /boot/isos/avg_arl_cdi_all_120_160420a12074.iso
+ map /boot/isos/avg_arl_cdi_all_120_160420a12074.iso (hd32)
+ map --hook
+ chainloader (hd32)
+
+title Hirens.BootCD.15.2 
+ find --set-root /boot/isos/Hirens.BootCD.15.2.iso
+ map /boot/isos/Hirens.BootCD.15.2.iso (hd32)
+ map --hook
+ chainloader (hd32)
+
+title LPS 1.5.6 public 
+find --set-root --ignore-floppies /boot/isos/LPS-1.5.6_public.iso
+map /boot/isos/LPS-1.5.6_public.iso (hd32)
+map --hook
+root (hd32)
+kernel (hd32)/boot/vmlinuz load_ramdisk=1 ramdisk_blocksize=4096 root=/dev/ram0 ramdisk_size=524288 console=ttyS3 splash=silent vga=791 
+chainloader (hd32) 
+
+title LPS 1.5.6 public deluxe
+find --set-root --ignore-floppies /boot/isos/LPS-1.5.6_public_deluxe.iso
+map /boot/isos/LPS-1.5.6_public_deluxe.iso (hd32)
+map --hook
+root (hd32)
+kernel (hd32)/boot/vmlinuz load_ramdisk=1 ramdisk_blocksize=4096 root=/dev/ram0 ramdisk_size=786432 console=ttyS3 splash=silent vga=791 
+chainloader (hd32) 
+
+title Ultimate Boot CD 5.3.5
+ find --set-root /boot/isos/ubcd535.iso
+ map /boot/isos/ubcd535.iso (hd32)
+ map --hook
+ chainloader (hd32)
+
+title austrumi-3.4.2 
+ find --set-root --ignore-floppies /boot/isos/austrumi-3.4.2.iso
+ map --mem /boot/isos/austrumi-3.4.2.iso (hd32)
+ map --hook
+ kernel (hd32)/austrumi/bzImage austrumi
+ initrd (hd32)/austrumi/initrd.gz 
+ map --unhook
+ boot
+
+title GNU/CDlinux 0.9.7.1 
+ map --mem /boot/isos/CDlinux-0.9.7.1.iso (hd32)
+ map --hook
+ map --status
+ kernel (hd32)/CDlinux/bzImage CDL_DEV=label=karthikeyan CDL_DIR=/boot/isos/ CDL_IMG=CDlinux-0.9.7.1.iso 
+ initrd (hd32)/CDlinux/initrd
+ map --unhook
+ boot
+
+title pclinuxos-kde-2014.12 
+ map --unhook
+ map --unmap=0:0xff
+ find --set-root --ignore-floppies /boot/isos/pclinuxos-kde-2014.12.iso
+ map --heads=0 --sectors-per-track=0 /boot/isos/pclinuxos-kde-2014.12.iso (0xff)
+ map --hook
+ root (0xff)
+ kernel (0xff)/isolinux/vmlinuz fromusb bootfromiso=/boot/isos/pclinuxos-kde-2014.12.iso livecd=livecd root=/dev/rd/3 acpi=on vga=788 keyb=en vmalloc=256M edd=off 
+ initrd (0xff)/isolinux/initrd.gz
+
+title pclinuxos-kde-fullmonty-2014.12 
+ map --unhook
+ map --unmap=0:0xff
+ find --set-root --ignore-floppies /boot/isos/pclinuxos-kde-fullmonty-2014.12.iso
+ map --heads=0 --sectors-per-track=0 /boot/isos/pclinuxos-kde-fullmonty-2014.12.iso (0xff)
+ map --hook
+ root (0xff)
+ kernel (0xff)/isolinux/vmlinuz fromusb bootfromiso=/boot/isos/pclinuxos-kde-fullmonty-2014.12.iso livecd=livecd root=/dev/rd/3 acpi=on vga=788 keyb=en vmalloc=256M edd=off 
+ initrd (0xff)/isolinux/initrd.gz
+
+title pclinuxos-kde-minime-2014.12 
+ map --unhook
+ map --unmap=0:0xff
+ find --set-root --ignore-floppies /boot/isos/pclinuxos-kde-minime-2014.12.iso
+ map --heads=0 --sectors-per-track=0 /boot/isos/pclinuxos-kde-minime-2014.12.iso (0xff)
+ map --hook
+ root (0xff)
+ kernel (0xff)/isolinux/vmlinuz fromusb bootfromiso=/boot/isos/pclinuxos-kde-minime-2014.12.iso livecd=livecd root=/dev/rd/3 acpi=on vga=788 keyb=en vmalloc=256M edd=off 
+ initrd (0xff)/isolinux/initrd.gz
+
+title pclinuxos-lxde-2014.12 
+ map --unhook
+ map --unmap=0:0xff
+ find --set-root --ignore-floppies /boot/isos/pclinuxos-lxde-2014.12.iso
+ map --heads=0 --sectors-per-track=0 /boot/isos/pclinuxos-lxde-2014.12.iso (0xff)
+ map --hook
+ root (0xff)
+ kernel (0xff)/isolinux/vmlinuz fromusb bootfromiso=/boot/isos/pclinuxos-lxde-2014.12.iso livecd=livecd root=/dev/rd/3 acpi=on vga=788 keyb=en vmalloc=256M edd=off 
+ initrd (0xff)/isolinux/initrd.gz
+
+title pclinuxos-mate-2014.12 
+ map --unhook
+ map --unmap=0:0xff
+ find --set-root --ignore-floppies /boot/isos/pclinuxos-mate-2014.12.iso
+ map --heads=0 --sectors-per-track=0 /boot/isos/pclinuxos-mate-2014.12.iso (0xff)
+ map --hook
+ root (0xff)
+ kernel (0xff)/isolinux/vmlinuz fromusb bootfromiso=/boot/isos/pclinuxos-mate-2014.12.iso livecd=livecd root=/dev/rd/3 acpi=on vga=788 keyb=en vmalloc=256M edd=off 
+ initrd (0xff)/isolinux/initrd.gz
+
+title pclinuxos64-mate-2016.05
+ map --unhook
+ map --unmap=0:0xff
+ find --set-root --ignore-floppies /boot/isos/pclinuxos64-mate-2016.05.iso
+ map --heads=0 --sectors-per-track=0 /boot/isos/pclinuxos64-mate-2016.05.iso (0xff)
+ map --hook
+ root (0xff)
+ kernel (0xff)/isolinux/vmlinuz fromusb bootfromiso=/boot/isos/pclinuxos64-mate-2016.05.iso livecd=livecd root=/dev/rd/3 acpi=on vga=788 keyb=en vmalloc=256M edd=off
+ initrd (0xff)/isolinux/initrd.gz
+
+title stresslinux_32bit_11.4.i686-0.7.106
+ find --set-root --ignore-floppies /boot/isos/stresslinux_32bit_11.4.i686-0.7.106.iso
+ map /boot/isos/stresslinux_32bit_11.4.i686-0.7.106.iso (hd32)
+ map --hook
+ root (hd32)
+ chainloader (hd32)
+
+title Shutdown
+ halt
+
+title Reboot
+ reboot 
